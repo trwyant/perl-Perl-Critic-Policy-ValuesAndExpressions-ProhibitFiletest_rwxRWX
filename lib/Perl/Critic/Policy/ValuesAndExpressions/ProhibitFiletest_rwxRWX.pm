@@ -29,8 +29,8 @@ Readonly::Hash   my %FILE_ACCESS    => hashify( qw{ -r -w -x -R -W -X } );
 
 sub supported_parameters { return () }
 
-sub default_severity     { return $SEVERITY_MEDIUM           }
-sub default_themes       { return qw( bugs trw )                  }
+sub default_severity     { return $SEVERITY_LOW              }
+sub default_themes       { return qw( bugs trw )             }
 sub applies_to           { return 'PPI::Token::Operator'     }
 
 #-----------------------------------------------------------------------------
@@ -80,7 +80,7 @@ Access to a file can succeed or fail for other reasons such as the presence of
 Access Control Lists (ACLs), a file system being mounted read-only, or an
 executable being corrupt.
 
-This policy is under the "bugs" theme, with medium severity.
+This policy is under the "bugs" theme, with low severity.
 
 =head1 CONFIGURATION
 
@@ -89,6 +89,8 @@ This Policy has no configuration options.
 =head1 SEE ALSO
 
 L<Perl::Critic::Policy::ValuesAndExpressions::ProhibitFiletest_f|Perl::Critic::Policy::ValuesAndExpressions::ProhibitFiletest_f>
+
+L<https://blogs.perl.org/users/tom_wyant/2022/06/the-file-access-operators-to-use-or-not-to-use.html>
 
 =head1 SUPPORT
 
