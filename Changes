@@ -1,2 +1,11 @@
+0.000_003	2022-06-19	T. R. Wyant
+    Change severity to low.
+
+commit cd634cf68928f5ea22331429bb1b22f64f3a1da3
+Author: Tom Wyant <wyant@cpan.org>
+Date:   Tue Jun 14 08:07:29 2022 -0400
+
+    Add CONTRIBUTING
+
 0.000_002	2022-06-13	T. R. Wyant
     Initial commit.

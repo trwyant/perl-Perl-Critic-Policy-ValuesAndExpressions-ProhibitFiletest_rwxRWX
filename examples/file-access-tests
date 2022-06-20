@@ -19,7 +19,7 @@ use PPI::Document;
 use Readonly;
 use Pod::Usage;
 
-our $VERSION = '0.000_002';
+our $VERSION = '0.000_003';
 
 Readonly::Scalar my $DEFAULT_SINGLE_FILE_FORMAT => 4;
 Readonly::Scalar my $DEFAULT_MULTI_FILE_FORMAT  => 5;
