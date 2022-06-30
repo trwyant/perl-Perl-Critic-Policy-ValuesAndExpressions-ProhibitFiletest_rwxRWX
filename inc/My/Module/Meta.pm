@@ -18,7 +18,7 @@ sub new {
 }
 
 sub abstract {
-    return 'Do not pass capture variables as arguments.';
+    return 'Prohibit file access tests.';
 }
 
 sub add_to_cleanup {
