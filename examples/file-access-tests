@@ -132,14 +132,14 @@ __END__
 
 =head1 NAME
 
-old-prototypes - Find old-style prototypes
+file-access-tests - Find uses of file access tests.
 
 =head1 SYNOPSIS
 
- old-prototypes .
- old-prototypes lib/
- old-prototypes -help
- old-prototypes -version
+ file-access-tests .
+ file-access-tests lib/
+ file-access-tests -help
+ file-access-tests -version
 
 =head1 OPTIONS
 
