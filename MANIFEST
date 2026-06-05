@@ -6,8 +6,8 @@ examples/README
 inc/My/Module/Build.pm
 inc/My/Module/Meta.pm
 lib/Perl/Critic/Policy/ValuesAndExpressions/ProhibitFiletest_rwxRWX.pm
-LICENSES/Artistic
-LICENSES/Copying
+LICENSE-Artistic
+LICENSE-GPL
 Makefile.PL
 MANIFEST
 README
