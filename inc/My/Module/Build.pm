@@ -87,8 +87,7 @@ files if needed.
 =head1 SUPPORT
 
 Support is by the author. Please file bug reports at
-L<https://rt.cpan.org/Public/Dist/Display.html?Name=Perl-Critic-Policy-ValuesAndExpressions-ProhibitFiletest_rwxRWX>,
-L<https://github.com/trwyant/perl-Perl-Critic-Policy-ValuesAndExpressions-ProhibitFiletest_rwxRWX/issues>, or in
+L<https://github.com/trwyant/perl-Perl-Critic-Policy-ValuesAndExpressions-ProhibitFiletest_rwxRWX/issues> or in
 electronic mail to the author.
 
 =head1 AUTHOR

@@ -68,8 +68,7 @@ sub meta_merge {
 	dynamic_config	=> 1,
 	resources	=> {
 	    bugtracker	=> {
-		web	=> 'https://rt.cpan.org/Public/Dist/Display.html?Name=Perl-Critic-Policy-ValuesAndExpressions-ProhibitFiletest_rwxRWX',
-		# web	=> 'https://github.com/trwyant/perl-Perl-Critic-Policy-ValuesAndExpressions-ProhibitFiletest_rwxRWX/issues',
+		web	=> 'https://github.com/trwyant/perl-Perl-Critic-Policy-ValuesAndExpressions-ProhibitFiletest_rwxRWX/issues',
 		mailto  => 'harryfmudd@comcast.net',
 	    },
 	    license	=> 'http://dev.perl.org/licenses/',
@@ -334,8 +333,7 @@ information makes it into F<META.yml>.
 =head1 SUPPORT
 
 Support is by the author. Please file bug reports at
-L<https://rt.cpan.org/Public/Dist/Display.html?Name=Perl-Critic-Policy-ValuesAndExpressions-ProhibitFiletest_rwxRWX>,
-L<https://github.com/trwyant/perl-Perl-Critic-Policy-ValuesAndExpressions-ProhibitFiletest_rwxRWX/issues>, or in
+L<https://github.com/trwyant/perl-Perl-Critic-Policy-ValuesAndExpressions-ProhibitFiletest_rwxRWX/issues> or in
 electronic mail to the author.
 
 =head1 AUTHOR
