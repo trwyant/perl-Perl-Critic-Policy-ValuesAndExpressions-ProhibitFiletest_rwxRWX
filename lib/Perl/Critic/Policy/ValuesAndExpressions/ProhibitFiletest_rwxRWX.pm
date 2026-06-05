@@ -105,7 +105,7 @@ Thomas R. Wyant, III F<wyant at cpan dot org>.
 
 =head1 COPYRIGHT
 
-Copyright 2022 Thomas R. Wyant, III.
+Copyright 2022, 2026 Thomas R. Wyant, III.
 
 This program is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
