@@ -15,7 +15,7 @@ use Perl::Critic::Utils qw{ :severities :classification :ppi :booleans
 use PPI;
 use PPI::Document;
 
-our $VERSION = '0.002_01';
+our $VERSION = '0.003';
 
 #-----------------------------------------------------------------------------
 
