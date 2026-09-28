@@ -1,12 +1,12 @@
-This directory contains examples for the ProhibitUnusedVarsStricter
+This directory contains examples for the ProhibitFiletest_rwxRWX 
 Perl-Critic policy. The files are:
 
 README - This file.
 
-unused-vars - This is a script that executes the
-    ProhibitUnusedVarsStricter policy. It is more or less
+file-access-tests - This is a script that executes the
+    ProhibitFiletest_rwxRWX policy. It is more or less
     equivalent to
-    $ perlcritic --single ProhibitUnusedVarsStricter
+    $ perlcritic --single ProhibitFiletest_rwxRWX
     but has its own configuration file. Use
-    $ unused-vars --help
+    $ file-access-tests --help
     for the documentation.
