@@ -61,7 +61,7 @@ __END__
 
 =pod
 
-=for stopwords builtins
+=for stopwords builtins ACLs
 
 =head1 NAME
 

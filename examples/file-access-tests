@@ -71,46 +71,7 @@ foreach my $fn ( @ARGV ) {
     no warnings qw{ newline };  ## no critic (ProhibitNoWarnings)
     foreach my $pf ( -e $fn ? all_perl_files( $fn ) : \$fn ) {
 
-        # We jump through this particular hoop because PPI::Document
-        # does not recognize 'use utf8;'. Instead it looks for a Byte
-        # Order Mark (a.k.a. non-breaking space) as the first encoded
-        # character of the file, and adjusts accordingly. UTF-8 files
-        # without a BOM are therefore not read correctly. So we incur
-        # the overhead of guessing and decoding if we guess a unique
-        # encoding. We then feed PPI::Document the possibly-decoded file
-        # content.
-        my $doc;
-        {
-            local $/ = undef;
-            open my $fh, '<', $pf
-                or die "Unable to open $pf: $!\n";
-            my $data = <$fh>;
-            close $fh;
-
-            my $enc = guess_encoding( $data, @suspect );
-            ref $enc
-                and $data = $enc->decode( $data );
-            # warn "Debug - $pf encoding: ", ref $enc ? $enc->name() : $enc;
-
-            $doc = eval { PPI::Document->new( \$data ) }
-                or do {
-                warn "In $pf, @{[ PPI::Document->errstr() ]}\n";
-                next;
-            };
-        }
-
-
-        # DANGER WILL ROBINSON! ENCAPSULATION VIOLATION!
-        # There is no supported way to associate a file name with a
-        # PPI::Document created from file content rather than file name.
-        # After considering monkey-patching the filename() method, I
-        # went with just hammering the name into the hash, which has the
-        # advantage of being straightforward. A solid monkey-patch
-        # implementation needs inside-out objects so it can fall back to
-        # the original implementation of filename() if an overridden
-        # file name is not present.
-        ref $pf
-            or $doc->{filename} = $pf;
+        my $doc = make_doc( $pf );
 
         my @violations = Perl::Critic::Violation::sort_by_location(
             $critic->critique( $doc ) );
@@ -128,7 +89,58 @@ foreach my $fn ( @ARGV ) {
     }
 }
 
+sub make_doc {
+    my ( $pf ) = @_;
+
+        # We jump through this particular hoop because PPI::Document
+        # does not recognize 'use utf8;'. Instead it looks for a Byte
+        # Order Mark (a.k.a. non-breaking space) as the first encoded
+        # character of the file, and adjusts accordingly. UTF-8 files
+        # without a BOM are therefore not read correctly. So we incur
+        # the overhead of guessing and decoding if we guess a unique
+        # encoding. We then feed PPI::Document the possibly-decoded file
+        # content.
+        my $doc;
+        {
+            local $INPUT_RECORD_SEPARATOR = undef;
+            open my $fh, '<', $pf
+                or die "Unable to open $pf: $OS_ERROR\n";
+            my $data = <$fh>;
+            close $fh
+                or die "Unable to close $pf: $OS_ERROR\n";
+
+            my $enc = guess_encoding( $data, @suspect );
+            ref $enc
+                and $data = $enc->decode( $data );
+            # warn "Debug - $pf encoding: ", ref $enc ? $enc->name() : $enc;
+
+            $doc = eval { PPI::Document->new( \$data ) }
+                or do {
+                warn "In $pf, @{[ PPI::Document->errstr() ]}\n";
+                next;
+            };
+        }
+
+        # DANGER WILL ROBINSON! ENCAPSULATION VIOLATION!
+        # There is no supported way to associate a file name with a
+        # PPI::Document created from file content rather than file name.
+        # After considering monkey-patching the filename() method, I
+        # went with just hammering the name into the hash, which has the
+        # advantage of being straightforward. A solid monkey-patch
+        # implementation needs inside-out objects so it can fall back to
+        # the original implementation of filename() if an overridden
+        # file name is not present.
+        ref $pf
+            or $doc->{filename} = $pf;
+
+        return $doc;
+}
+
 __END__
+
+=pod
+
+=for stopwords encoding un
 
 =head1 NAME
 

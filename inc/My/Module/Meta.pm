@@ -141,6 +141,12 @@ sub provides {
     return ( provides => $provides );
 }
 
+sub recommended_module_versions {
+    return (
+	# 'File::Which'   => 0,
+    );
+}
+
 sub requires {
     my ( $self, @extra ) = @_;
 ##  if ( ! $self->distribution() ) {
@@ -288,6 +294,11 @@ This method attempts to load L<Module::Metadata|Module::Metadata>. If
 this succeeds, it returns a C<provides> entry suitable for inclusion in
 L<meta_merge()|/meta_merge> data (i.e. C<'provides'> followed by a hash
 reference). If it can not load the required module, it returns nothing.
+
+=head2 recommended_module_versions
+
+This subroutine returns an array of the names and versions of
+recommended modules.
 
 =head2 requires
 
